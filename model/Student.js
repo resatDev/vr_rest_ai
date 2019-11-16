@@ -14,6 +14,9 @@ module.exports = db.sequelize.define(
         },
         class_id: {
             type: Sequelize.INTEGER
+        },
+        teacher: {
+            type: Sequelize.STRING
         }
     },
     {

@@ -15,7 +15,8 @@ students.post('/register', (req, res)=> {
     const userData =  {
         id: req.body.id,
         name: req.body.name,
-        class_id: req.body.class_id
+        class_id: req.body.class_id,
+        teacher: req.body.teacher
     };
 
     //Check if the student_id is exist more than one in an classroom
@@ -29,7 +30,7 @@ students.post('/register', (req, res)=> {
 
         //If there haven't been any students record which saved with this student_id before
         if(!student){  
-            db.sequelize.query("INSERT INTO students (id,name,class_id) VALUES(" + "'" + userData.id + "'" + "," +  "'" + userData.name + "'" + "," + "'" + userData.class_id + "'" + ");", (err) => {
+            db.sequelize.query("INSERT INTO students (id,name,class_id,teacher) VALUES(" + "'" + userData.id + "'" + "," +  "'" + userData.name + "'" + "," + "'" + userData.class_id + "'" + "," + "'" + userData.teacher + "'" + ");", (err) => {
                 res.send(err);
             });
             let status = {
