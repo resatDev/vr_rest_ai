@@ -12,10 +12,12 @@ app.use(bodyParser.json());
 let Students = require("./routes/Students");
 let Modules = require("./routes/Modules");
 let Teachers = require("./routes/Teachers");
+let Questions = require("./routes/Questions")
 
 app.use('/students', Students);
 app.use('/modules', Modules);
 app.use('/teachers', Teachers);
+app.use('/questions', Questions);
 
 app.listen(port, () => {
     console.log('Server is running at the port: ', port)

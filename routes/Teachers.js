@@ -3,7 +3,7 @@ const express = require('express');
 const teachers = express.Router();
 const cors = require('cors');
 const db = require('./../database/db');
-const Teacher = require('../model/Teacher');
+const Teacher = require('../model/Question');
 
 teachers.use(cors());
 
