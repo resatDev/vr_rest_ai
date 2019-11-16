@@ -36,7 +36,6 @@ students.post('/register', (req, res)=> {
                 'status': 'ok'
             };
             res.json(status);
-            console.log(status);
         }
 
         //If there have been any students record which saved with this student_id before
@@ -46,7 +45,6 @@ students.post('/register', (req, res)=> {
                 student: student
             };
             res.json(error);
-            console.log(error);
         };
     })
 
