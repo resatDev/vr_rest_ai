@@ -9,6 +9,9 @@ module.exports = db.sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
+        user_id: {
+            type: Sequelize.STRING
+        },
         module: {
             type: Sequelize.STRING
         },
