@@ -33,4 +33,41 @@ questions.post('/add', (req, res) => {
 
 })
 
+//getting quetions from exam
+//server/questions/get
+questions.get('/get', (req, res) => {
+
+    //check the existance of exam
+    Question.findAll({
+        exam: req.body.exam
+    })
+    .then(questions => {
+
+        //if exam exist
+        if(questions){
+            res.json({
+                status: '200',
+                questions: questions
+            })
+        }
+
+        //if exam does not exist
+        else{
+            res.json({
+                status: '404',
+                questions: 'There is no question in this exam or exam does not exist!'
+            })
+        }
+    })
+
+     //İf there would be any error
+     .catch(err => {
+        res.json({
+            status: '505',
+            error: err
+        })
+    })
+})
+
+
 module.exports = questions;
