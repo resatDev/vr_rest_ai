@@ -49,6 +49,14 @@ students.post('/register', (req, res)=> {
             console.log(error);
         };
     })
+
+    //if an error occur
+    .catch(err => {
+        res.json({
+            status: '505',
+            error: err
+        })
+    })
 });
 
 //student information
@@ -79,7 +87,51 @@ students.get('/info', (req, res) => {
             })
         }
     })
+
+    //if an error occur
+    .catch(err => {
+        res.json({
+            status: '505',
+            error: err
+        })
+    })
 })
 
+
+//class list
+//server/students/list
+students.get('/list', (req, res) => {
+
+    //Check the class list
+    Student.findAll({
+        class_id: req.body.class_id
+    })
+    .then(students => {
+
+        //if there would be some students which join the class
+        if(students){
+            res.json({
+                status: '200',
+                students: students
+            })
+        }
+
+        //if the class has no student
+        else{
+            res.json({
+                status: '404',
+                students: 'This classroom has no students.'
+            })
+        }
+    })
+
+    //if an error occur
+    .catch(err => {
+        res.json({
+            status: '505',
+            error: err
+        })
+    })
+})
 
 module.exports = students
