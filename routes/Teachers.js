@@ -54,5 +54,42 @@ teachers.post('/register', (req, res) => {
     })
 })
 
+teachers.get('/login', (req, res) => {
+
+    //check the teacher exist with this email and password
+    Teacher.findOne({
+        where: {
+            email: req.body.email,
+            password: req.body.password
+        }
+    })
+    .then(teacher => {
+
+        //if teacher exist
+        if(teacher){
+            res.json({
+                status: '200',
+                teacher: teacher
+            })
+        }
+
+        //if teacher does not exist
+        else{
+            res.json({
+                status: '404',
+                teacher: 'Email or password is wrong!'
+            })
+        }
+    })
+
+    //İf there would be any error
+    .catch(err => {
+        res.json({
+            status: '505',
+            error: err
+        })
+    })
+})
+
 module.exports = teachers;
 
