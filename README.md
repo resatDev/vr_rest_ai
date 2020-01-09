@@ -1,5 +1,6 @@
 # vr_rest_ai
-students/
-  register {}
-  info
-  list
+
+#### students/
+    register {id, name, class_id, teacher}
+    info {id}
+    list {class_id}
