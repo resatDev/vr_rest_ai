@@ -3,7 +3,7 @@ const express = require('express');
 const teachers = express.Router();
 const cors = require('cors');
 const db = require('./../database/db');
-const Teacher = require('../model/Question');
+const Teacher = require('../model/Teacher');
 
 teachers.use(cors());
 
@@ -67,7 +67,7 @@ teachers.get('/login', (req, res) => {
 
         //if teacher exist
         if(teacher){
-            res.json({
+            res.send({
                 status: '200',
                 teacher: teacher
             })
@@ -75,7 +75,7 @@ teachers.get('/login', (req, res) => {
 
         //if teacher does not exist
         else{
-            res.json({
+            res.send({
                 status: '404',
                 teacher: 'Email or password is wrong!'
             })
